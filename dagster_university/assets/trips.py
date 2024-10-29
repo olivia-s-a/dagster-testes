@@ -63,4 +63,25 @@ def taxi_trips_file_carambola() -> None:
         # TAXI_TRIPS_TEMPLATE_FILE_PATH = data/raw/taxi_trips_2023-03.parquet
     ) as output_file:
         output_file.write(raw_trips.content)
+        
+        
+        
+        
+        
+# ---------()------------------
 
+
+#LESSON 3.9.: Practice: Create  taxi_zone_file asset
+
+@asset
+def taxi_zone_file() ->  None:
+    """(a)This asset will contain a unique identifier and name for each part of NYC as a distinct taxi zone.
+        Resp.: The raw CSV file for the taxi zones dataset. Sourced from the NYC Open Data portal.
+    """
+
+    raw_zones = requests.get(
+        'https://data.cityofnewyork.us/api/views/755u-8jsi/rows.csv?accessType=DOWNLOAD'
+        )
+    with open(constants.TAXI_ZONES_FILE_PATH, "wb") as output_file:
+        output_file.write(raw_zones.content)
+# tá certinho, diva, parabéns <3
