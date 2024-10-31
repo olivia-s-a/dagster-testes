@@ -61,3 +61,13 @@ def manhattan_map_feijoada() -> None:
     plt.savefig(constants.MANHATTAN_MAP_FILE_PATH, bbox_inches='tight')
     plt.close()
 
+# LESSON 4.7.: Practice: Create a trips_by_week asset
+"""@asset(
+    deps=["taxi_trips_canjiquinha"]
+)
+def trips_by_week_galinhada() -> None:
+    taxi_trips = taxi_trips_canjiquinha()
+
+    period #String; sunday da semana; aaaa-mm-dd
+    num_trips 
+    passenger_count"""
