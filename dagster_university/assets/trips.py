@@ -71,7 +71,7 @@ def taxi_trips_canjiquinha() -> None:
 @asset(
     deps=[taxi_zone_file_bacalhau] #bacalhau depende de dobradinha
 )
-def taxi_zone_dobradinha() -> None:
+def taxi_zones_dobradinha() -> None:
     """
         Uses the taxi_zones_file file to create a table called zones in your DuckDB database.
     """
