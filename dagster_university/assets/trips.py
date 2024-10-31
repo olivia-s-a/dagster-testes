@@ -36,6 +36,9 @@ def taxi_zone_file_bacalhau() ->  None:
         output_file.write(raw_zones.content)
 # tá certinho, diva, parabéns <3
 
+
+#LESSON 4.4.: Loading data into a database.
+
 @asset(
     deps=["taxi_trips_file_abacate"]
 )
@@ -60,6 +63,29 @@ def taxi_trips_canjiquinha() -> None:
         );
     """
 
+    conn_canjiquinha = duckdb.connect(os.getenv("DUCKDB_DATABASE"))
+    conn_canjiquinha.execute(sql_query)
+
+#Lesson 4.5.: Practice: Create a taxi_zones asset
+
+@asset(
+    deps=[taxi_zone_file_bacalhau] #bacalhau depende de dobradinha
+)
+def taxi_zone_dobradinha() -> None:
+    """
+        Uses the taxi_zones_file file to create a table called zones in your DuckDB database.
+    """
+
+    sql_query = f"""
+        create or replace table zones as (
+            select
+                LocationID as zone_id,
+                zone,
+                borough,
+                the_geom as geometry
+            from '{constants.TAXI_ZONES_FILE_PATH}'
+        );
+    """
+
     conn_dobradinha = duckdb.connect(os.getenv("DUCKDB_DATABASE"))
     conn_dobradinha.execute(sql_query)
-
